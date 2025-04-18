@@ -1,6 +1,8 @@
 import express from "express"
 import cors from "cors"
 import { genrateNumber } from "./util";
+import { simpleGit } from 'simple-git';
+
 
 const app = express();
 
@@ -11,15 +13,19 @@ app.use(express.json())
 
 const port = 3000
 
-// app.get('/', (req, res) => {
-//   res.render('index');
-// });
 
 app.get('/repodeploy', (req, res) => {
-  const repoUrl = req.body.repoUrl  //githubUrl
-  console.log("Repo Url", repoUrl)
+  const repoUrl = req.body.repoUrl 
 
-  res.json({})
+  const id =  genrateNumber()
+  const output = simpleGit().clone(repoUrl , `     output/${id}`)
+
+  console.log("Repo Url", output)
+
+  res.json({
+    message: "Hello World" ,
+    data : output
+  })
 });
 
 app.listen(port);
