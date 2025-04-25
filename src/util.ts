@@ -1,11 +1,13 @@
-const MAX_LEN = 6 
+const MAX_LEN = 6;
 
-export function  genrateNumber() {
-    let ans = ""
-    for( let i = 0 ; i < MAX_LEN ; i++) {
-        ans += Math.floor(Math.random() * 10)
+export function genrateNumber() {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let ans = '';
+    for (let i = 0; i < MAX_LEN; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        ans += chars[randomIndex];
     }
-    return ans
+    return ans;
 }
 
-console.log(genrateNumber())
+console.log(genrateNumber());
