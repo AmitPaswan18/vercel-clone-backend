@@ -16,9 +16,6 @@ app.use(cors())
 app.use(express.json())
 
 const port = 3000
-console.log("REGION", process.env.REGION);
-console.log("POINT", process.env.ENDPOINT_URL);
-
 
 
 app.post('/repodeploy', async (req, res) => {
